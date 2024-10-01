@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Softy - DELTA</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="slike/logo.jpeg" width="125px">
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="DELTA.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contacts.html">Contact</a></li>
+                        <li><a href="account.html">Account</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="slike/cart-icon.png" class="cart-icon" width="30px" height="30px"></a>
+                <img src="slike/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+        </div>
+        <!-----------------single product details----------------->
+        <div class="small-container single-product">
+            <div class="row">
+                <div class="col-2">
+                    <img src="slike/nova hudica.jpeg" width="100%" id="ProductImg"> 
+                     <div class="small-img-row">
+                        <div class="small-img-col">
+                            <img src="slike/nova hudica.jpeg" width="100%" class="small-img">
+                        </div>
+                        <div class="small-img-col">
+                            <img src="slike/nova hudica.jpeg" width="100%" class="small-img">
+                        </div>
+                        <div class="small-img-col">
+                            <img src="slike/nova hudica.jpeg" width="100%" class="small-img">
+                        </div>
+                        <div class="small-img-col">
+                            <img src="slike/nova hudica.jpeg" width="100%" class="small-img">
+                        </div>
+                     </div>
+                </div>
+
+                <div class="col-2">
+                    <p>Home/ Delta Softy</p>
+                    <h1>Black Hoodie with a small logo</h1>
+                    <h4>&#8364;60.00</h4>
+                    <select id="sizeSelect">
+                        <option>Select size</option>
+                        <option>XL</option>
+                        <option>L</option>
+                        <option>M</option>
+                        <option>S</option>
+                    </select>
+                    <input type="number" id="quantityInput" value="1">
+                    <button class="btn" onclick="addToCart('Delta Softy', 60.00)">Add to Cart</button>
+
+                    <h3>Product details</h3>
+                    <br>
+                    <p><strong>Softy hoodie</strong> is made from 100% renewable cotton.</p>
+                </div>
+            </div>
+        </div>
+        <!--------------title---------------->
+
+        <div class="small-container">
+            <div class="row row-2">
+               <h2>Related products</h2>
+            </div>
+        </div>
+
+
+
+
+       <div class="small-container">
+
+         <div class="row">
+            <div class="col-4">
+                <a href="product-details-drip.html"><img src="slike/delta drip.jpeg"></a>
+                <h4>Black T-Shirt</h4>
+                <p>&#8364;40.00</p>
+
+            </div>
+            <div class="col-4">
+                <a href="product-details.html"><img src="slike/br00tal 1.jpeg"></a>
+                <h4>Brutal T-Shirt</h4>
+                <p>&#8364;40.00</p>
+
+            </div>
+            <div class="col-4">
+                <a href="product-details-neznam.html"><img src="slike/neznam sprijeda.jpeg"></a>
+                <h4>Hoodie</h4>
+                <p>&#8364;60.00</p>
+
+            </div>
+            <div class="col-4">
+                <a href="product-details-kapa.html"><img src="slike/kapa.jpeg"></a>
+                <h4>Cap</h4>
+                <p>&#8364;25.00</p>
+
+            </div>
+        </div> 
+
+         
+       </div>
+<!----------footer----------->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download the app</h3>
+                <p>Download the app for <a href="https://play.google.com/store/">Android</a> or <a href="https://www.apple.com/app-store/">iOS</a></p>
+            </div>
+
+            <div class="footer-col-2">
+                <img src="slike/logo.jpeg">
+                <p>Making the finest clothing out of recycled materials</p>
+            </div>
+
+            <div class="footer-col-4">
+                <h3>Follow us</h3>
+                <ul>
+                    <a href="https://www.facebook.com/"><li>Facebook</li></a>
+                    <a href="https://twitter.com/x"><li>X</li></a>
+                    <a href="https://www.instagram.com/"><li>Instagram</li></a>
+                    <a href="https://www.youtube.com"><li>Youtube</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+   </div>
+    <script src="product_functions.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Us - DELTA</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="DELTA.html"><img src="slike/logo.jpeg" width="125px"></a>
+                    </div>
+                    <nav>
+                        <ul id="MenuItems">
+                            <li><a href="DELTA.html">Home</a></li>
+                            <li><a href="products.html">Products</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contacts.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <a href="cart.html"><img src="slike/cart-icon.png" class="cart-icon" width="30px" height="30px"></a>
+                    <img src="slike/menu.png" class="menu-icon" onclick="menutoggle()">
+                </div>
+            </div>
+        </div>
+
+        <!----------- Contact Section ----------->
+        <div class="small-container">
+            <div class="row">
+                <div class="contact-page">
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions or need assistance, feel free to reach out to us through the following contact details:</p>
+                    
+                    <h3>Phone Numbers:</h3>
+                    <ul style="list-style-type:none; padding: 0;">
+                        <li>+1 555-123-4567</li>
+                        <li>+1 555-987-6543</li>
+                        <li>+1 555-765-4321</li>
+                    </ul>
+                    
+                    <h3>Email Address:</h3>
+                    <p><a href="mailto:info@delta-imaginary.com">info@delta-imaginary.com</a></p>
+                    
+                    <h3>Office Address:</h3>
+                    <p>1234 Delta Lane, Eco Park, Green City, 56789</p>
+                    
+                    <h3>Business Hours:</h3>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                    <p>Saturday: 10:00 AM - 4:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+
+        <!----------footer----------->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col-1">
+                        <h3>Download the app</h3>
+                        <p>Download the app for <a href="https://play.google.com/store/">Android</a> or <a href="https://www.apple.com/app-store/">iOS</a></p>
+                    </div>
+
+                    <div class="footer-col-2">
+                        <img src="slike/logo.jpeg">
+                        <p>Making the finest clothing out of recycled materials</p>
+                    </div>
+
+                    <div class="footer-col-4">
+                        <h3>Follow us</h3>
+                        <ul>
+                            <a href="https://www.facebook.com/"><li>Facebook</li></a>
+                            <a href="https://twitter.com/x"><li>X</li></a>
+                            <a href="https://www.instagram.com/"><li>Instagram</li></a>
+                            <a href="https://www.youtube.com"><li>Youtube</li></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-----------js toggle menu---------->
+        <script>
+            var MenuItems = document.getElementById("MenuItems");
+            MenuItems.style.maxHeight = "0px";
+
+            function menutoggle(){
+                if(MenuItems.style.maxHeight == "0px") 
+                {
+                    MenuItems.style.maxHeight = "200px";
+                }
+                else
+                {
+                    MenuItems.style.maxHeight = "0px";
+                }
+            }
+        </script>
+
+    </body>
+</html>

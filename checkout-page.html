@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>checkout-page</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="DELTA.html"><img src="slike/logo.jpeg" width="125px"></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="DELTA.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contacts.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="slike/cart-icon.png" class="cart-icon" width="30px" height="30px"></a>
+                <img src="slike/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>    
+<!---------- featured ------------>
+    <div class="container-checkout">
+        <h1>Checkout info</h1>
+        <div class="checkout-info">
+            <!-- proizvodi iz kosarice -->
+        </div>
+    </div>
+    <form class="form-container">
+        <label for="checkout-text">Full Name</label>
+        <input type="text" id="full-name" title="Enter your full name" placeholder="John Doe" required>
+
+        <label for="checkout-text">E-mail</label>
+        <input type="email" id="email" title="Enter your e-mail address" placeholder="example@example.com" required>
+
+        <label for="checkout-text">Address</label>
+        <input type="text" id="address" title="Enter your address" placeholder="1234 Street Name" required>
+
+        <label for="checkout-text">Postal Code</label>
+        <input type="text" id="postal-code" title="Enter your postal code" placeholder="123456" required>
+
+        <label for="checkout-text">Country</label>
+        <input type="text" id="country" title="Enter your country" placeholder="Country" required>
+
+        <input type="submit" value="Complete Purchase" class="submit-button">
+    </form>
+  
+<!----------footer----------->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download the app</h3>
+                <p>Download the app for <a href="https://play.google.com/store/">Android</a> or <a href="https://www.apple.com/app-store/">iOS</a></p>
+            </div>
+
+            <div class="footer-col-2">
+                <img src="slike/logo.jpeg">
+                <p>Making the finest clothing out of recycled materials</p>
+            </div>
+
+            <div class="footer-col-4">
+                <h3>Follow us</h3>
+                <ul>
+                    <a href="https://www.facebook.com/"><li>Facebook</li></a>
+                    <a href="https://twitter.com/x"><li>X</li></a>
+                    <a href="https://www.instagram.com/"><li>Instagram</li></a>
+                    <a href="https://www.youtube.com"><li>Youtube</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+   </div>
+    <script src="product_functions.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkoutInfo = document.querySelector('.checkout-info'); 
+        const cart = JSON.parse(localStorage.getItem('cart')) || []; 
+
+    if (cart.length === 0) {
+        checkoutInfo.innerHTML = '<p>Your cart is empty. Please add products to your cart before proceeding to checkout.</p>';
+        return;
+    }
+
+        let total = 0; 
+
+        cart.forEach(item => {
+            const itemDiv = document.createElement('div');
+            const subtotal = item.price * item.quantity; 
+            total += subtotal; 
+        
+        itemDiv.textContent = `${item.name} - Quantity: ${item.quantity} - Size: ${item.size} - Price: €${subtotal.toFixed(2)}`;
+        
+        checkoutInfo.appendChild(itemDiv);
+    });
+
+            const totalDiv = document.createElement('div');
+            totalDiv.textContent = `Total Amount: €${total.toFixed(2)}`;
+            checkoutInfo.appendChild(totalDiv); 
+});
+</script>
+    
+<script>
+document.querySelector('.form-container').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    const fullName = document.getElementById('full-name').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+    const postalCode = document.getElementById('postal-code').value;
+    const country = document.getElementById('country').value;
+
+    const orderNumber = Math.floor(100000000 + Math.random() * 900000000); 
+    const confirmationMessage = `
+        <h2><strong>Order Confirmed!</strong></h2>
+        <p>Thank you, <strong>${fullName}</strong>, for your purchase!</p>
+        <p>Your order number is: <strong> #${orderNumber}</strong></p>
+        <p>We will send a confirmation to your email: ${email}.</p>
+        <p>Delivery Address:</p>
+        <p>${address}, ${postalCode}, ${country}</p>
+    `;
+
+    const checkoutInfo = document.querySelector('.checkout-info');
+    checkoutInfo.innerHTML = confirmationMessage;
+
+    localStorage.removeItem('cart');
+});
+
+</script>
+
+    </body>
+</html>

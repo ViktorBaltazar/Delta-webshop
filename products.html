@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>All products - DELTA</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="DELTA.html"><img src="slike/logo.jpeg" width="125px"></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="DELTA.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contacts.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="slike/cart-icon.png" class="cart-icon" width="30px" height="30px"></a>
+                <img src="slike/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+        </div>
+
+        <div class="small-container">
+            <div class="row row-2">
+              <h2>All products</h2>
+              <select id="sortOptions" onchange="sortProducts()">
+                <option value="default">Default sorting</option>
+                <option value="price">Sort by price</option>
+                <option value="name">Sort by name</option>
+              </select>
+            </div>
+          
+            <div class="row" id="productContainer">
+              <div class="col-4" data-price="40" data-name="Black T-Shirt" data-index="1">
+                <a href="product-details-drip.html"><img src="slike/delta drip.jpeg"></a>
+                <h4>Black T-Shirt</h4>
+                <p>&#8364;40.00</p>
+              </div>
+              <div class="col-4" data-price="40" data-name="Brutal T-Shirt" data-index="2">
+                <a href="product-details.html"><img src="slike/br00tal 1.jpeg"></a>
+                <h4>Brutal T-Shirt</h4>
+                <p>&#8364;40.00</p>
+              </div>
+              <div class="col-4" data-price="60" data-name="Hoodie" data-index="3">
+                <a href="product-details-neznam.html"><img src="slike/neznam sprijeda.jpeg"></a>
+                <h4>Hoodie</h4>
+                <p>&#8364;60.00</p>
+              </div>
+              <div class="col-4" data-price="25" data-name="Cap" data-index="4">
+                <a href="product-details-kapa.html"><img src="slike/kapa.jpeg"></a>
+                <h4>Cap</h4>
+                <p>&#8364;25.00</p>
+              </div>
+              <div class="col-4" data-price="60" data-name="Softy" data-index="5">
+                <a href="product-details-softy.html"><img src="slike/nova hudica.jpeg"></a>
+                <h4>Softy</h4>
+                <p>&#8364;60.00</p>
+              </div>
+            </div>
+          </div>
+          
+<!----------footer----------->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download the app</h3>
+                <p>Download the app for <a href="https://play.google.com/store/">Android</a> or <a href="https://www.apple.com/app-store/">iOS</a></p>
+            </div>
+
+            <div class="footer-col-2">
+                <img src="slike/logo.jpeg">
+                <p>Making the finest clothing out of recycled materials</p>
+            </div>
+
+            <div class="footer-col-4">
+                <h3>Follow us</h3>
+                <ul>
+                    <a href="https://www.facebook.com/"><li>Facebook</li></a>
+                    <a href="https://twitter.com/x"><li>X</li></a>
+                    <a href="https://www.instagram.com/"><li>Instagram</li></a>
+                    <a href="https://www.youtube.com"><li>Youtube</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+   </div>
+    <script src="product_functions.js"></script>
+
+
+       <!-----------js toggle menu---------->
+       <script>
+        var MenuItems = document.getElementById("MenuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle(){
+            if(MenuItems.style.maxHeight == "0px") 
+            {
+                 MenuItems.style.maxHeight = "200px";
+            }
+            else
+            {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+       </script>
+
+       <!---------------------------script for adding into cart------------>
+       <script>
+        function addToCart(productName, price) {
+            //size and quantity 
+            const sizeSelect = document.getElementById('sizeSelect');
+            const quantityInput = document.getElementById('quantityInput');
+
+            const selectedSize = sizeSelect.options[sizeSelect.selectedIndex].text;
+            const selectedQuantity = parseInt(quantityInput.value);
+
+            if (selectedSize === 'Select size') {
+                alert('Please select a size before adding to the cart.');
+                return;
+            }
+            //store it in a local storage 
+            const selectedProduct = {
+                name: productName,
+                price: price,
+                size: selectedSize,
+                quntity: selectedQuantity,
+            };
+            // Check if cart exists in local storage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Add the product to the cart
+            cart.push(selectedProduct);
+
+            // Store the updated cart back in local storage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`Added ${selectedQuantity} x ${selectedSize} - ${productName} to the cart. Total price: &#8364;  ${(price * selectedQuantity).toFixed(2)}`);
+        }
+    </script>
+
+    <script>
+       function sortProducts() {
+            const sortOption = document.getElementById("sortOptions").value;
+            const productContainer = document.getElementById("productContainer");
+            const products = Array.from(productContainer.getElementsByClassName("col-4"));
+
+            if (sortOption === "price") {
+                // Sortirano prema cijeni
+                products.sort((a, b) => {
+                    return parseInt(a.getAttribute("data-price")) - parseInt(b.getAttribute("data-price"));
+                });
+            } else if (sortOption === "name") {
+                // Sortirano prema imenu abecedno
+                products.sort((a, b) => {
+                    const nameA = a.getAttribute("data-name").toUpperCase();
+                    const nameB = b.getAttribute("data-name").toUpperCase();
+                    return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+                });
+            } else {
+                // Zadano sortiranje
+                products.sort((a, b) => {
+                    return parseInt(a.getAttribute("data-index")) - parseInt(b.getAttribute("data-index"));
+                });
+            }
+            productContainer.innerHTML = "";
+            products.forEach(product => productContainer.appendChild(product));
+        }
+
+
+    </script>
+
+    
+    </body>
+</html>
